@@ -29,8 +29,50 @@ STEP-7: The junction character where these two meet forms the cipher character.
 STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
-## PROGRAM
+## PROGRAM:
+NAME: JAYAMANIKANDA 
 
-## OUTPUT
+REG NO.:212225230113
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-## RESULT
+void caesarEncrypt(char *text, int key) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = text[i];
+        if (c >= 'A' && c <= 'Z') {
+            text[i] = ((c - 'A' + key) % 26 + 26) % 26 + 'A';
+        }
+        else if (c >= 'a' && c <= 'z') {
+            text[i] = ((c - 'a' + key) % 26 + 26) % 26 + 'a';
+        }
+    }
+}
+
+void caesarDecrypt(char *text, int key) {
+    caesarEncrypt(text, -key);
+}
+
+int main() {
+    char message[100];
+    int key;
+    printf("Enter the message to encrypt: ");
+    fgets(message, sizeof(message), stdin); 
+    message[strcspn(message, "\n")] = '\0';
+    printf("Enter the Caesar Cipher key (an integer): ");
+    scanf("%d", &key); 
+    caesarEncrypt(message, key);
+    printf("Encrypted Message: %s\n", message);
+    caesarDecrypt(message, key);
+    printf("Decrypted Message: %s\n", message);
+    return 0;
+}
+```
+
+## OUTPUT:
+<img width="1406" height="557" alt="Screenshot 2026-11-02 133215" src="https://github.com/user-attachments/assets/77fe3498-f7ae-47db-aa07-6cfba8239c05" />
+
+
+## RESULT:
+Thus, our objective is achieved 
